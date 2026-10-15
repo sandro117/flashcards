@@ -1,4 +1,6 @@
 // Cartões iniciais (seção 11 do contexto). Importados só na primeira execução.
+// Cartões adicionados depois ficam em SEED_UPDATES: cada versão é importada uma única vez,
+// inclusive para quem já usa o app (o progresso salvo não é alterado).
 export const SEED_DECKS = ["Português", "História de PE", "Raciocínio Lógico", "Informática", "Direito Constitucional", "Direitos Humanos", "Legislação"];
 
 export const SEED_CARDS = [
@@ -321,5 +323,48 @@ export const SEED_CARDS = [
     "deck": "Informática",
     "front": "Backup incremental x diferencial",
     "back": "Incremental: o que mudou desde o último backup de qualquer tipo. Diferencial: o que mudou desde o último backup completo."
+  }
+];
+
+export const SEED_UPDATES = [
+  {
+    version: 2,
+    cards: [
+    {
+      "deck": "Português",
+      "front": "Feiura, baiuca e bocaiuva têm acento?",
+      "back": "Não. Paroxítona com i/u tônico logo depois de ditongo perde o acento. Exceção: oxítona mantém (Piauí)."
+    },
+    {
+      "deck": "Português",
+      "front": "Hífen x hifens; item x itens",
+      "back": "Singular em -n leva acento (hífen, pólen). Plural em -ens não leva (hifens, polens, itens)."
+    },
+    {
+      "deck": "Português",
+      "front": "\"Houveram problemas\" está certo?",
+      "back": "NÃO. Haver = existir fica sempre no singular: HOUVE problemas, HAVIA vagas, DEVE HAVER soluções."
+    },
+    {
+      "deck": "Português",
+      "front": "Ideia, joia, heroico, assembleia têm acento?",
+      "back": "Não. Ditongo aberto éi/ói em paroxítona perdeu o acento. Em oxítona mantém: papéis, herói, dói."
+    },
+    {
+      "deck": "Português",
+      "front": "Acento em éi/ói depois do Acordo: quando cai e quando fica?",
+      "back": "CAI na paroxítona: ideia, assembleia, plateia, geleia, estreia, jiboia, joia, heroico. FICA na oxítona e no monossílabo: papéis, anéis, herói, chapéu, dói, céu."
+    },
+    {
+      "deck": "Português",
+      "front": "Vocabulário formal de reescrita (AOCP)",
+      "back": "Mormente = principalmente. Outrossim = também. Destarte = assim, portanto. Porquanto = porque. Conquanto = embora. Todavia = mas."
+    },
+    {
+      "deck": "Português",
+      "front": "Objeto direto x objeto indireto",
+      "back": "OD: sem preposição (vi o jogo). OI: com preposição exigida pelo verbo (recorri aos agentes, obedeço ao regulamento)."
+    }
+  ]
   }
 ];
