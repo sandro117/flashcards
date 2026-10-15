@@ -113,7 +113,7 @@ function dueLabel(card) {
 
 // Intervalo por extenso para os botões de avaliação.
 function intervalText(days) {
-  if (days <= 0) return 'agora';
+  if (days <= 0) return 'minutos';
   if (days === 1) return '1 dia';
   if (days < 30) return `${days} dias`;
   if (days < 365) {
@@ -442,7 +442,7 @@ async function viewCardForm(cardId, deckId) {
           <div class="stats-row">
             <div class="stat"><b>${card.repetitions}</b><small>acertos</small></div>
             <div class="stat"><b>${card.lapses}</b><small>erros</small></div>
-            <div class="stat"><b>${intervalText(card.intervalDays)}</b><small>intervalo</small></div>
+            <div class="stat"><b>${card.intervalDays ? intervalText(card.intervalDays) : "–"}</b><small>intervalo</small></div>
           </div>
         </section>
         <button class="btn btn-danger" type="button" id="del">Excluir cartão</button>` : ''}
@@ -534,7 +534,14 @@ function renderReviewCard(backHref) {
   if (!queue.length) return renderDone(backHref);
   const card = queue[0];
   const total = session.done + queue.length;
-  const preview = (g) => intervalText(schedule(card, g).intervalDays);
+  const now = new Date();
+  // Prazo de cada botão: minutos nas etapas de aprendizado, dias nas revisões.
+  const preview = (g) => {
+    const u = schedule(card, g, now);
+    if (u.intervalDays) return intervalText(u.intervalDays);
+    const min = Math.round((new Date(u.dueDate) - now) / 60000);
+    return min === 1 ? '1 minuto' : `${min} minutos`;
+  };
   const deckName = esc(session.deckNames.get(card.deckId) || '');
   const isNew = cardState(card) === 'new';
   $app.innerHTML = `
@@ -586,8 +593,9 @@ function renderReviewCard(backHref) {
     await db.putCard(updated);
     await db.logStudy(today());
     queue.shift();
-    if (grade === GRADES.AGAIN) queue.push(updated);
-    else s.correct++;
+    // Etapas em minutos voltam no fim da fila da mesma sessão.
+    if (updated.intervalDays === 0) queue.push(updated);
+    if (grade !== GRADES.AGAIN) s.correct++;
     s.done++;
     s.busy = false;
     s.revealed = false;

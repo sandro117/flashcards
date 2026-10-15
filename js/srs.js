@@ -29,35 +29,53 @@ function goodInterval(card) {
   return Math.round(card.intervalDays * card.easeFactor);
 }
 
+// Etapas curtas (em minutos) para cartões novos ou errados, como no Anki.
+export const STEPS_MIN = { AGAIN: 5, HARD: 10 };
+
+const addMinutes = (date, min) => new Date(date.getTime() + min * 60000);
+
 // Calcula o novo estado do cartão sem alterá-lo.
+// Cartão em aprendizado (novo ou errado): Errei 5 min, Difícil 10 min, Bom 1 dia, Fácil 2 dias.
+// Cartão em revisão: SM-2 da seção 7, com Difícil < Bom < Fácil sempre distintos.
 export function schedule(card, grade, now = new Date()) {
   const c = { ...card };
+  const learning = c.repetitions === 0;
+  let due;
   switch (grade) {
     case GRADES.AGAIN:
-      c.repetitions = 0;
-      c.intervalDays = 0;
       c.lapses += 1;
       c.easeFactor = Math.max(1.3, c.easeFactor - 0.2);
+      c.repetitions = 0;
+      c.intervalDays = 0;
+      due = addMinutes(now, STEPS_MIN.AGAIN);
       break;
     case GRADES.HARD:
-      c.intervalDays = c.repetitions === 0 ? 1 : Math.max(1, Math.round(c.intervalDays * 1.2));
-      c.easeFactor = Math.max(1.3, c.easeFactor - 0.15);
-      c.repetitions += 1;
+      if (learning) {
+        c.intervalDays = 0;
+        due = addMinutes(now, STEPS_MIN.HARD);
+      } else {
+        const good = goodInterval(c);
+        c.intervalDays = Math.max(1, Math.min(Math.round(c.intervalDays * 1.2), good - 1));
+        c.easeFactor = Math.max(1.3, c.easeFactor - 0.15);
+        c.repetitions += 1;
+      }
       break;
     case GRADES.GOOD:
       c.intervalDays = goodInterval(c);
       c.repetitions += 1;
       break;
-    case GRADES.EASY:
-      c.intervalDays = Math.max(1, Math.round(goodInterval(c) * 1.3));
+    case GRADES.EASY: {
+      const good = goodInterval(c);
+      c.intervalDays = learning ? 2 : Math.max(good + 1, Math.round(good * 1.3));
       c.easeFactor += 0.15;
       c.repetitions += 1;
       break;
+    }
     default:
       throw new Error('Nota inválida: ' + grade);
   }
   c.easeFactor = Math.round(c.easeFactor * 100) / 100;
-  c.dueDate = addDays(startOfDay(now), c.intervalDays).toISOString();
+  c.dueDate = (due || addDays(startOfDay(now), c.intervalDays)).toISOString();
   c.lastReviewedAt = now.toISOString();
   return c;
 }
