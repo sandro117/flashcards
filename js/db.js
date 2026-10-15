@@ -91,6 +91,23 @@ export async function getCard(id) {
   return tx(['cards'], 'readonly', (t) => promisify(t.objectStore('cards').get(id)));
 }
 
+// ---------- Histórico de estudo (sequência de dias) ----------
+// Guarda { "2026-10-15": respostasNoDia } na store "meta"; não mexe nos cartões.
+export async function getStudyLog() {
+  const row = await tx(['meta'], 'readonly', (t) => promisify(t.objectStore('meta').get('studyLog')));
+  return row?.value || {};
+}
+
+export async function logStudy(dayKey) {
+  return tx(['meta'], 'readwrite', async (t) => {
+    const store = t.objectStore('meta');
+    const row = await promisify(store.get('studyLog'));
+    const value = row?.value || {};
+    value[dayKey] = (value[dayKey] || 0) + 1;
+    store.put({ key: 'studyLog', value });
+  });
+}
+
 // ---------- Escrita ----------
 export async function putDeck(deck) {
   return tx(['decks'], 'readwrite', (t) => promisify(t.objectStore('decks').put(deck)));
