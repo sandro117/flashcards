@@ -1,5 +1,5 @@
 // Persistência local em IndexedDB (100% offline, sem backend).
-import { SEED_DECKS, SEED_CARDS } from './seed.js';
+import { SEED_DECKS, SEED_CARDS, SEED_UPDATES } from './seed.js';
 
 const DB_NAME = 'flashcards';
 const DB_VERSION = 1;
@@ -173,16 +173,26 @@ export async function exportCards(deckId) {
   return cards.map((c) => ({ deck: names.get(c.deckId) || '', front: c.front, back: c.back }));
 }
 
-// ---------- Primeira execução ----------
+// ---------- Primeira execução e cartões novos ----------
+const getMeta = (key) => tx(['meta'], 'readonly', (t) => promisify(t.objectStore('meta').get(key)));
+const setMeta = (key, value) => tx(['meta'], 'readwrite', (t) => promisify(t.objectStore('meta').put({ key, value })));
+
 export async function ensureSeeded() {
-  const flag = await tx(['meta'], 'readonly', (t) => promisify(t.objectStore('meta').get('seeded')));
-  if (flag) return;
-  const existing = await getDecks();
-  const names = new Set(existing.map((d) => norm(d.name)));
-  const decks = SEED_DECKS.filter((n) => !names.has(norm(n))).map(newDeck);
-  await tx(['decks'], 'readwrite', (t) => decks.forEach((d) => t.objectStore('decks').put(d)));
-  await importCards(SEED_CARDS);
-  await tx(['meta'], 'readwrite', (t) => promisify(t.objectStore('meta').put({ key: 'seeded', value: true })));
+  if (!(await getMeta('seeded'))) {
+    const existing = await getDecks();
+    const names = new Set(existing.map((d) => norm(d.name)));
+    const decks = SEED_DECKS.filter((n) => !names.has(norm(n))).map(newDeck);
+    await tx(['decks'], 'readwrite', (t) => decks.forEach((d) => t.objectStore('decks').put(d)));
+    await importCards(SEED_CARDS);
+    await setMeta('seeded', true);
+  }
+  // Atualizações: importa cada lote uma vez só (duplicados são ignorados pelo importCards).
+  const done = (await getMeta('seedVersion'))?.value || 1;
+  const pending = SEED_UPDATES.filter((u) => u.version > done).sort((a, b) => a.version - b.version);
+  for (const u of pending) {
+    await importCards(u.cards);
+    await setMeta('seedVersion', u.version);
+  }
 }
 
 // Pede ao navegador para não apagar os dados em caso de pouco espaço.
