@@ -366,5 +366,20 @@ export const SEED_UPDATES = [
       "back": "OD: sem preposição (vi o jogo). OI: com preposição exigida pelo verbo (recorri aos agentes, obedeço ao regulamento)."
     }
   ]
+  },
+  {
+    version: 3,
+    cards: [
+    {
+      "deck": "Português",
+      "front": "Por que \"chegaram a uma casa\" não tem crase?",
+      "back": "Não é porque \"chegar\" dispensa a preposição (ele exige \"a\"). É porque \"uma\" é artigo indefinido, e crase só acontece com o artigo definido \"a\"."
+    },
+    {
+      "deck": "Português",
+      "front": "\"Àquele/àquela\": de onde vem a crase?",
+      "back": "Da preposição \"a\" + o \"a\" inicial do pronome demonstrativo aquele/aquela/aquilo. Não é junção de artigos."
+    }
+  ]
   }
 ];
