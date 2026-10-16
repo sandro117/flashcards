@@ -381,5 +381,25 @@ export const SEED_UPDATES = [
       "back": "Da preposição \"a\" + o \"a\" inicial do pronome demonstrativo aquele/aquela/aquilo. Não é junção de artigos."
     }
   ]
+  },
+  {
+    version: 4,
+    cards: [
+    {
+      "deck": "Português",
+      "front": "\"QUE\": relativo ou integrante?",
+      "back": "Troque por \"o qual / a qual\": se funcionar, é pronome relativo (Ela, a qual estava assustada). Troque por \"isso\": se funcionar, é conjunção integrante (percebeu isso)."
+    },
+    {
+      "deck": "Português",
+      "front": "\"LOGO\": advérbio ou conjunção?",
+      "back": "Se der para trocar por \"imediatamente\", é advérbio de tempo (logo percebeu). Se der para trocar por \"portanto\", é conjunção conclusiva (estudou, logo passou)."
+    },
+    {
+      "deck": "Português",
+      "front": "\"MUITO/MUITA\": pronome ou advérbio?",
+      "back": "Antes de substantivo: pronome indefinido, varia (muita calma, muitos livros). Antes de adjetivo ou verbo: advérbio, não varia (muito calmo, estudou muito)."
+    }
+  ]
   }
 ];
