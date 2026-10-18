@@ -1,6 +1,6 @@
 // Service Worker: guarda o app no cache para funcionar offline.
 // Ao publicar uma nova versão, aumente o número abaixo para o iPhone baixar os arquivos novos.
-const CACHE = 'flashcards-v6';
+const CACHE = 'flashcards-v7';
 const ASSETS = [
   './',
   './index.html',

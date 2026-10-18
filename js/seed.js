@@ -401,5 +401,65 @@ export const SEED_UPDATES = [
       "back": "Antes de substantivo: pronome indefinido, varia (muita calma, muitos livros). Antes de adjetivo ou verbo: advérbio, não varia (muito calmo, estudou muito)."
     }
   ]
+  },
+  {
+    version: 5,
+    cards: [
+    {
+      "deck": "Raciocínio Lógico",
+      "front": "O que NÃO é proposição?",
+      "back": "Ordem (Apresente-se!), pergunta (Será?), exclamação (Que lindo!) e frase aberta (x + 3 > 10, Ele é alto). Frase falsa É proposição (7 é par)."
+    },
+    {
+      "deck": "Raciocínio Lógico",
+      "front": "Tabela-verdade: quando cada conectivo é V ou F?",
+      "back": "E: V só com as duas V. OU: F só com as duas F. SE...ENTÃO: F só em V→F. SE E SOMENTE SE: V quando iguais."
+    },
+    {
+      "deck": "Raciocínio Lógico",
+      "front": "Negação de \"Se P, então Q\"",
+      "back": "\"P E não Q\" (MA-NE). Negação NUNCA tem \"se...então\"."
+    },
+    {
+      "deck": "Raciocínio Lógico",
+      "front": "Equivalências de \"Se P, então Q\"",
+      "back": "\"Não P OU Q\" (NE-Y-MAR) e \"Se não Q, então não P\" (contrapositiva)."
+    },
+    {
+      "deck": "Raciocínio Lógico",
+      "front": "\"Se Q, então P\" é equivalente a \"Se P, então Q\"?",
+      "back": "NÃO. Inverter sem negar é pegadinha (recíproca). Só vale invertendo E negando as duas."
+    },
+    {
+      "deck": "Raciocínio Lógico",
+      "front": "Negação de \"P e Q\" e de \"P ou Q\"",
+      "back": "Nega tudo e troca o conectivo: não(P e Q) = não P OU não Q. não(P ou Q) = não P E não Q."
+    },
+    {
+      "deck": "Raciocínio Lógico",
+      "front": "Negação de \"Todo A é B\" e de \"Nenhum A é B\"",
+      "back": "Todo A é B → Algum (pelo menos um) A NÃO é B. Nenhum A é B → Algum A é B. Negação de \"todo\" NÃO é \"nenhum\"."
+    },
+    {
+      "deck": "Raciocínio Lógico",
+      "front": "Argumentos válidos com \"Se P, então Q\"",
+      "back": "Modus Ponens: P, logo Q (seta para frente). Modus Tollens: não Q, logo não P (volta negando)."
+    },
+    {
+      "deck": "Raciocínio Lógico",
+      "front": "Falácias com \"Se P, então Q\" (inválidos)",
+      "back": "Afirmar a 2ª: \"Q, logo P\". Negar a 1ª: \"não P, logo não Q\". Ambos ERRADOS."
+    },
+    {
+      "deck": "Raciocínio Lógico",
+      "front": "Premissas em cadeia com \"não\": por onde começo?",
+      "back": "Pela premissa mais simples (a que afirma ou nega algo direto) e volte negando em cada \"se...então\" (modus tollens em cadeia)."
+    },
+    {
+      "deck": "Raciocínio Lógico",
+      "front": "Conjuntos: pelo menos um, somente um, nenhum",
+      "back": "Pelo menos um = A + B − ambos. Somente um = (A − ambos) + (B − ambos). Nenhum = total − pelo menos um."
+    }
+  ]
   }
 ];
