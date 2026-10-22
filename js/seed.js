@@ -461,5 +461,60 @@ export const SEED_UPDATES = [
       "back": "Pelo menos um = A + B − ambos. Somente um = (A − ambos) + (B − ambos). Nenhum = total − pelo menos um."
     }
   ]
+  },
+  {
+    version: 6,
+    cards: [
+    {
+      "deck": "Raciocínio Lógico",
+      "front": "Equivalente (contrapositiva): \"Se chove, o chão molha\"",
+      "back": "Se o chão NÃO molha, então NÃO chove"
+    },
+    {
+      "deck": "Raciocínio Lógico",
+      "front": "Equivalente com \"ou\": \"Se chove, o chão molha\"",
+      "back": "NÃO chove OU o chão molha"
+    },
+    {
+      "deck": "Raciocínio Lógico",
+      "front": "\"Se o chão não molha, então não chove\" é equivalente a \"Se chove, o chão molha\"?",
+      "back": "SIM (troca de lugar + \"não\" nas duas)"
+    },
+    {
+      "deck": "Raciocínio Lógico",
+      "front": "\"Se o chão molha, então choveu\" é equivalente a \"Se chove, o chão molha\"?",
+      "back": "NÃO (trocou sem negar; o chão pode molhar por outro motivo)"
+    },
+    {
+      "deck": "Raciocínio Lógico",
+      "front": "\"Se não chove, o chão não molha\" é equivalente a \"Se chove, o chão molha\"?",
+      "back": "NÃO (negou sem trocar de lugar)"
+    },
+    {
+      "deck": "Raciocínio Lógico",
+      "front": "\"Não chove ou o chão não molha\" é equivalente a \"Se chove, o chão molha\"?",
+      "back": "NÃO (negou as duas; no NE-Y-MAR, só a 1ª leva \"não\")"
+    },
+    {
+      "deck": "Raciocínio Lógico",
+      "front": "Equivalente com \"se...então\": \"Ana estuda ou trabalha\"",
+      "back": "Se Ana NÃO estuda, então trabalha"
+    },
+    {
+      "deck": "Raciocínio Lógico",
+      "front": "Contar os \"não\": contrapositiva x NE-Y-MAR",
+      "back": "Contrapositiva: 2 \"não\" + ordem trocada. NE-Y-MAR: 1 \"não\" só, no começo"
+    },
+    {
+      "deck": "Raciocínio Lógico",
+      "front": "Regra ou flagrante? \"É sábado e o quartel não fez faxina\"",
+      "back": "Flagrante → é NEGAÇÃO (nunca equivalência)"
+    },
+    {
+      "deck": "Raciocínio Lógico",
+      "front": "Negação de \"Algum candidato colou\"",
+      "back": "NENHUM candidato colou (sem \"não\")"
+    }
+  ]
   }
 ];
