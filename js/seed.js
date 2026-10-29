@@ -516,5 +516,25 @@ export const SEED_UPDATES = [
       "back": "NENHUM candidato colou (sem \"não\")"
     }
   ]
+  },
+  {
+    version: 7,
+    cards: [
+    {
+      "deck": "Raciocínio Lógico",
+      "front": "Como negar uma frase que tem \"não\"?",
+      "back": "NEGAR UM \"NÃO\" = TIRAR O \"NÃO\". Negar \"não chove\" → \"chove\". Negar \"não dirige\" → \"dirige\". Negar \"chove\" → \"não chove\". Se tem \"não\", tira; se não tem, coloca."
+    },
+    {
+      "deck": "Raciocínio Lógico",
+      "front": "No \"OU\" e no \"E\", a ordem importa?",
+      "back": "Não, a ordem não importa: \"A ou B\" = \"B ou A\"."
+    },
+    {
+      "deck": "Raciocínio Lógico",
+      "front": "\"Todo A é B\" equivale a quê?",
+      "back": "\"Se é A, então é B\". Vale a contrapositiva: \"Se não é B, não é A\"."
+    }
+  ]
   }
 ];
