@@ -536,5 +536,55 @@ export const SEED_UPDATES = [
       "back": "\"Se é A, então é B\". Vale a contrapositiva: \"Se não é B, não é A\"."
     }
   ]
+  },
+  {
+    version: 8,
+    cards: [
+    {
+      "deck": "Direito Constitucional",
+      "front": "Art. 144: o que é da Polícia Federal (PF)?",
+      "back": "Polícia judiciária DA UNIÃO, com EXCLUSIVIDADE. Também: infrações contra bens, serviços e interesses da União; tráfico de drogas, contrabando e descaminho; polícia marítima, aeroportuária e de FRONTEIRAS (art. 144, §1º)."
+    },
+    {
+      "deck": "Direito Constitucional",
+      "front": "Art. 144: PRF × PFF",
+      "back": "PRF → patrulhamento ostensivo das RODOVIAS federais (§2º). PFF → patrulhamento ostensivo das FERROVIAS federais (§3º)."
+    },
+    {
+      "deck": "Direito Constitucional",
+      "front": "Art. 144: o que é da Polícia Civil?",
+      "back": "Polícia judiciária e apuração de infrações penais nos Estados, ressalvada a competência da UNIÃO e EXCETO os crimes MILITARES. Dirigida por delegado de carreira (§4º)."
+    },
+    {
+      "deck": "Direito Constitucional",
+      "front": "Art. 144: o que é da Polícia Militar?",
+      "back": "Polícia OSTENSIVA e preservação da ORDEM PÚBLICA (§5º)."
+    },
+    {
+      "deck": "Direito Constitucional",
+      "front": "Art. 144: o que é do Corpo de Bombeiros Militar?",
+      "back": "Além do que a lei definir, atividades de DEFESA CIVIL (§5º)."
+    },
+    {
+      "deck": "Direito Constitucional",
+      "front": "Art. 144: o que é da Polícia Penal?",
+      "back": "SEGURANÇA dos estabelecimentos penais (presídios). É vinculada ao órgão administrador do sistema penal do ente a que pertence (§5º-A, EC 104/2019)."
+    },
+    {
+      "deck": "Direito Constitucional",
+      "front": "Art. 144: o que é da Guarda Municipal?",
+      "back": "Proteção dos BENS, SERVIÇOS e INSTALAÇÕES do MUNICÍPIO, conforme a lei (§8º). O município PODE criar (não é obrigado)."
+    },
+    {
+      "deck": "Direito Constitucional",
+      "front": "Art. 144: quem é força auxiliar e reserva do Exército? A quem se subordina?",
+      "back": "PM e Corpo de Bombeiros Militar. Subordinam-se ao GOVERNADOR, junto com as polícias civis e penais estaduais e distritais (§6º)."
+    },
+    {
+      "deck": "Direito Constitucional",
+      "front": "Art. 144: quais são os órgãos da segurança pública?",
+      "back": "PF, PRF, PFF, Polícia Civil, PM e Corpo de Bombeiros, Polícia Penal (incisos I a VI). A Guarda Municipal NÃO está nessa lista: aparece só no §8º."
+    }
+  ]
   }
 ];
